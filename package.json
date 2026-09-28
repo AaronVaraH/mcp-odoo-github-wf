@@ -1,0 +1,48 @@
+{
+  "name": "mcp-odoo-git-workflow",
+  "version": "1.0.0",
+  "description": "MCP Server for Odoo task synchronization, Git branching strategies, and task documentation scaffolding",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "mcp-odoo-git-workflow": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "TUTORIAL.md"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"const fs=require('fs');const p='dist/index.js';let c=fs.readFileSync(p,'utf8');if(!c.startsWith('#!/usr/bin/env node')){fs.writeFileSync(p,'#!/usr/bin/env node\\n'+c);}\"",
+    "test": "tsx test/workflow.test.ts",
+    "dev": "tsx src/index.ts",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronVaraH/mcp-odoo-github-wf.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "odoo",
+    "git",
+    "workflow",
+    "agent"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.1",
+    "dotenv": "^18.0.4",
+    "simple-git": "^4.0.1",
+    "xmlrpc": "^1.3.2",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "@types/xmlrpc": "^1.3.10",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
